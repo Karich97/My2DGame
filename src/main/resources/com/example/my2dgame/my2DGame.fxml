@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="299.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.my2dgame.HelloController">
+   <children>
+      <ImageView fx:id="bg1" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/forest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bg2" fitHeight="400.0" fitWidth="600.0" layoutX="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/forest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player" fitHeight="62.0" fitWidth="71.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/gnome.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
