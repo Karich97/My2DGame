@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="299.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.my2dgame.GameController">
    <children>
@@ -21,5 +23,20 @@
             <Image url="@../../../img/gnome.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="enemy" fitHeight="38.0" fitWidth="21.0" layoutX="647.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/gnome.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelPause" focusTraversable="false" layoutX="203.0" layoutY="97.0" prefHeight="107.0" prefWidth="195.0" text="Pause" textAlignment="CENTER" textFill="#ccff00" visible="false">
+         <font>
+            <Font name="Andale Mono" size="64.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelLose" focusTraversable="false" layoutX="117.0" layoutY="46.0" prefHeight="218.0" prefWidth="376.0" text="You  Lose" textAlignment="CENTER" textFill="#ccff00" visible="false">
+         <font>
+            <Font name="Andale Mono" size="64.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

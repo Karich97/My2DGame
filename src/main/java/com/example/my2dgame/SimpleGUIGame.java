@@ -27,6 +27,10 @@ public class SimpleGUIGame extends Application {
         scene.setOnKeyReleased(e ->{
             if (e.getCode() == KeyCode.D || e.getCode() == KeyCode.RIGHT) GameController.right = false;
             if (e.getCode() == KeyCode.A || e.getCode() == KeyCode.LEFT) GameController.left = false;
+            if (e.getCode() == KeyCode.ESCAPE) {
+                if (!GameController.inGame) GameController.restart = true;
+                else GameController.isPaused = !GameController.isPaused;
+            }
         });
         stage.show();
     }

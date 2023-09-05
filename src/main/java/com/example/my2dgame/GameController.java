@@ -5,15 +5,16 @@ import java.util.ResourceBundle;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class GameController {
-    static  boolean left = false;
-    static boolean right = false;
-    static boolean jump = false;
-    static boolean readyToJump = true;
-    private final int playerSpeed = 3, jumpDownSpeed = 5;
+    ParallelTransition parallelTransition;
+    TranslateTransition enemyTransition;
+    static  boolean left = false, right = false, jump = false, readyToJump = true, isPaused = false, inGame = true, restart = false;
+    private final int playerDefaultSpeed = 3, jumpDefaultSpeed = 5, BG_WIDTH = 600;
+    private int playerSpeed = playerDefaultSpeed, jumpDownSpeed = jumpDefaultSpeed;
 
     AnimationTimer timer = new AnimationTimer() {
         @Override
@@ -29,6 +30,41 @@ public class GameController {
             }
             if (right && player.getLayoutX() < 100f) player.setLayoutX(player.getLayoutX() + playerSpeed);
             if (left && player.getLayoutX() > 28f) player.setLayoutX(player.getLayoutX() - playerSpeed);
+            if (isPaused && !labelPause.isVisible()) {
+                playerSpeed = 0;
+                jumpDownSpeed = 0;
+                parallelTransition.pause();
+                enemyTransition.pause();
+                labelPause.setVisible(true);
+            }
+            else if (!isPaused && labelPause.isVisible()) {
+                playerSpeed = playerDefaultSpeed;
+                jumpDownSpeed = jumpDefaultSpeed;
+                parallelTransition.play();
+                enemyTransition.play();
+                labelPause.setVisible(false);
+            }
+
+            if (player.getBoundsInParent().intersects(enemy.getBoundsInParent()) && inGame){
+                labelLose.setVisible(true);
+                playerSpeed = 0;
+                jumpDownSpeed = 0;
+                parallelTransition.pause();
+                enemyTransition.pause();
+                inGame = false;
+            }
+            else if (restart){
+                playerSpeed = playerDefaultSpeed;
+                jumpDownSpeed = jumpDefaultSpeed;
+                inGame = true;
+                restart = false;
+                labelLose.setVisible(false);
+
+                enemyTransition.stop();
+                startNewEnemy(enemy);
+                enemyTransition.play();
+                parallelTransition.play();
+            }
         }
     };
 
@@ -39,13 +75,15 @@ public class GameController {
     private URL location;
 
     @FXML
-    private ImageView bg1, bg2, player;
+    private ImageView bg1, bg2, player, enemy;
+
+    @FXML
+    private Label labelPause, labelLose;
 
     @FXML
     void initialize() {
         TranslateTransition bgOneTransition = new TranslateTransition(Duration.millis(5000), bg1);
         bgOneTransition.setFromX(0);
-        int BG_WIDTH = 600;
         bgOneTransition.setToX(BG_WIDTH * -1);
         bgOneTransition.setInterpolator(Interpolator.LINEAR);
 
@@ -54,11 +92,22 @@ public class GameController {
         bgTwoTransition.setToX(BG_WIDTH * -1);
         bgTwoTransition.setInterpolator(Interpolator.LINEAR);
 
-        ParallelTransition parallelTransition = new ParallelTransition(bgOneTransition, bgTwoTransition);
+        startNewEnemy(enemy);
+
+        parallelTransition = new ParallelTransition(bgOneTransition, bgTwoTransition);
         parallelTransition.setCycleCount(Animation.INDEFINITE);
         parallelTransition.play();
 
         timer.start();
+    }
+
+    private void startNewEnemy(ImageView enemy){
+        enemyTransition = new TranslateTransition(Duration.millis(3500), enemy);
+        enemyTransition.setFromX(0);
+        enemyTransition.setToX(BG_WIDTH * -1 - 100);
+        enemyTransition.setInterpolator(Interpolator.LINEAR);
+        enemyTransition.setCycleCount(Animation.INDEFINITE);
+        enemyTransition.play();
     }
 
 }
