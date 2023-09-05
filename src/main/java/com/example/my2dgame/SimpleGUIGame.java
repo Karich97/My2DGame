@@ -2,10 +2,10 @@ package com.example.my2dgame;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -13,8 +13,9 @@ public class SimpleGUIGame extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGUIGame.class.getResource("my2DGame.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 299);
-        stage.initStyle(StageStyle.UNDECORATED);
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 600, 299);
+        stage.setResizable(false);
         stage.setScene(scene);
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.D || e.getCode() == KeyCode.RIGHT) GameController.right = true;

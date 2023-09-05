@@ -1,8 +1,5 @@
 package com.example.my2dgame;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -67,12 +64,6 @@ public class GameController {
             }
         }
     };
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private ImageView bg1, bg2, player, enemy;
