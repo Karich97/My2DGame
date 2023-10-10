@@ -14,7 +14,7 @@ public class SimpleGUIGame extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGUIGame.class.getResource("my2DGame.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 600, 299);
+        Scene scene = new Scene(root, 600, 325);
         stage.setResizable(false);
         stage.setScene(scene);
         scene.setOnKeyPressed(e -> {

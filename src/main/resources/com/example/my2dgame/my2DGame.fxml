@@ -6,11 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="299.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.my2dgame.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.my2dgame.GameController">
    <children>
-      <ImageView fx:id="bg1" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bg3" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../img/forest.png" />
+            <Image url="@../../../img/background.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bg4" fitHeight="400.0" fitWidth="600.0" layoutX="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/background.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="bg2" fitHeight="400.0" fitWidth="600.0" layoutX="600.0" pickOnBounds="true" preserveRatio="true">
@@ -18,14 +23,19 @@
             <Image url="@../../../img/forest.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="player" fitHeight="62.0" fitWidth="71.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bg1" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../img/gnome.png" />
+            <Image url="@../../../img/forest.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="enemy" fitHeight="38.0" fitWidth="21.0" layoutX="647.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="player" fitHeight="107.0" fitWidth="75.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../img/gnome.png" />
+            <Image url="@../../../img/girl.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="enemy" fitHeight="35.0" fitWidth="53.0" layoutX="615.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/stone.png" />
          </image>
       </ImageView>
       <Label fx:id="labelPause" focusTraversable="false" layoutX="203.0" layoutY="97.0" prefHeight="107.0" prefWidth="195.0" text="Pause" textAlignment="CENTER" textFill="#ccff00" visible="false">
