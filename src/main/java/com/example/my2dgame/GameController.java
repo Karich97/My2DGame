@@ -45,7 +45,10 @@ public class GameController {
                 labelPause.setVisible(false);
             }
 
-            if (player.getBoundsInParent().intersects(enemy.getBoundsInParent()) && inGame){
+            if (player.getBoundsInParent().intersects(enemy.getBoundsInParent().getMinX() + 10,
+                    enemy.getBoundsInParent().getMinY() + 10,
+                    enemy.getBoundsInParent().getWidth() - 20,
+                    enemy.getBoundsInParent().getHeight() - 20) && inGame){
                 labelLose.setVisible(true);
                 playerSpeed = 0;
                 jumpDownSpeed = 0;
